@@ -1,17 +1,16 @@
-<?php 	
+<?php
+$localhost = "db";  // service name of the MySQL container in Docker Compose
+$username = "ayush";
+$password = "ayush123";  // Missing semicolon fixed here
+$dbname = "store";
 
-$localhost = "localhost";
-$username = "root";
-$password = "Bidhan@123654";
-$dbname = "test";
-$store_url = "http://bidhanvm.centralindia.cloudapp.azure.com/php-inventory-management-system/";
 // db connection
 $connect = new mysqli($localhost, $username, $password, $dbname);
+
 // check connection
-if($connect->connect_error) {
-  die("Connection Failed : " . $connect->connect_error);
+if ($connect->connect_error) {
+  die("Connection Failed: " . $connect->connect_error);
 } else {
   // echo "Successfully connected";
 }
-
 ?>
