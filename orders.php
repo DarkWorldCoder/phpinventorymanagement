@@ -11,50 +11,51 @@ if($_GET['o'] == 'add') {
 	echo "<div class='div-request div-hide'>editOrd</div>";
 } // /else manage order
 
-
 ?>
 
-<ol class="breadcrumb">
-  <li><a href="dashboard.php">Home</a></li>
-  <li>Order</li>
-  <li class="active">
-  	<?php if($_GET['o'] == 'add') { ?>
-  		Add Order
-		<?php } else if($_GET['o'] == 'manord') { ?>
-			Manage Order
-		<?php } // /else manage order ?>
-  </li>
-</ol>
+<!-- Page Header -->
+<div style="background: white; padding: 32px; border-radius: 12px; margin-bottom: 24px; border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm);">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 style="margin: 0; font-size: 28px; font-weight: 600; color: var(--gray-900);">
+                <i class="fa fa-shopping-cart" style="color: var(--primary-600);"></i> 
+                <?php if($_GET['o'] == 'add') {
+                    echo "Create New Order";
+                } else if($_GET['o'] == 'manord') { 
+                    echo "Order Management";
+                } else if($_GET['o'] == 'editOrd') { 
+                    echo "Edit Order";
+                }
+                ?>
+            </h1>
+            <p style="margin: 8px 0 0 0; color: var(--gray-600); font-size: 16px;">
+                <?php if($_GET['o'] == 'add') {
+                    echo "Create and process new customer orders with ease.";
+                } else if($_GET['o'] == 'manord') { 
+                    echo "View, edit, and manage all your customer orders.";
+                } else if($_GET['o'] == 'editOrd') { 
+                    echo "Modify order details and update customer information.";
+                }
+                ?>
+            </p>
+        </div>
+        <div class="col-md-4 text-right">
+            <?php if($_GET['o'] == 'manord') { ?>
+                <a href="orders.php?o=add" class="btn btn-primary">
+                    <i class="fa fa-plus"></i> New Order
+                </a>
+            <?php } else if($_GET['o'] == 'add') { ?>
+                <a href="orders.php?o=manord" class="btn btn-default">
+                    <i class="fa fa-list"></i> Manage Orders
+                </a>
+            <?php } ?>
+        </div>
+    </div>
+</div>
 
-
-<h4>
-	<i class='glyphicon glyphicon-circle-arrow-right'></i>
-	<?php if($_GET['o'] == 'add') {
-		echo "Add Order";
-	} else if($_GET['o'] == 'manord') { 
-		echo "Manage Order";
-	} else if($_GET['o'] == 'editOrd') { 
-		echo "Edit Order";
-	}
-	?>	
-</h4>
-
-
-
-<div class="panel panel-default">
-	<div class="panel-heading">
-
-		<?php if($_GET['o'] == 'add') { ?>
-  		<i class="glyphicon glyphicon-plus-sign"></i>	Add Order
-		<?php } else if($_GET['o'] == 'manord') { ?>
-			<i class="glyphicon glyphicon-edit"></i> Manage Order
-		<?php } else if($_GET['o'] == 'editOrd') { ?>
-			<i class="glyphicon glyphicon-edit"></i> Edit Order
-		<?php } ?>
-
-	</div> <!--/panel-->	
-	<div class="panel-body">
-			
+<!-- Order Content -->
+<div style="background: white; border-radius: 12px; border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm); overflow: hidden;">
+	<div style="padding: 24px;">		
 		<?php if($_GET['o'] == 'add') { 
 			// add order
 			?>			
@@ -300,7 +301,7 @@ if($_GET['o'] == 'add') {
 			    </div>
 			  </div> <!--/form-group-->			  
 
-			  <table class="table" id="productTable">
+			  <table class="table" id="editProductTable">
 			  	<thead>
 			  		<tr>			  			
 			  			<th style="width:40%;">Product</th>

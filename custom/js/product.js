@@ -6,8 +6,15 @@ $(document).ready(function() {
 	// manage product data table
 	manageProductTable = $('#manageProductTable').DataTable({
 		'ajax': 'php_action/fetchProduct.php',
-		'order': []
+		'order': [],
+		'drawCallback': function(settings) {
+			// Re-initialize dropdown functionality after table redraw
+			setupProductDropdowns();
+		}
 	});
+	
+	// Initialize dropdown functionality
+	setupProductDropdowns();
 
 	// add product modal btn clicked
 	$("#addProductModalBtn").unbind('click').bind('click', function() {
@@ -513,6 +520,76 @@ function removeProduct(productId = null) {
 		}); // /remove product btn clicked
 	} // /if productid
 } // /remove product function
+
+/**
+ * Setup dropdown functionality for product action buttons
+ * Ensures dropdowns work properly in DataTables
+ */
+function setupProductDropdowns() {
+	// Handle dropdown button clicks
+	$('#manageProductTable').off('click.dropdown').on('click.dropdown', '[data-toggle="dropdown"]', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		
+		var $button = $(this);
+		var $dropdown = $button.closest('.btn-group');
+		var $menu = $dropdown.find('.dropdown-menu');
+		var isOpen = $dropdown.hasClass('open');
+		
+		// Close all other dropdowns
+		$('#manageProductTable .btn-group.open').removeClass('open');
+		
+		if (!isOpen) {
+			// Open this dropdown
+			$dropdown.addClass('open');
+			
+			// Ensure proper positioning and visibility
+			$menu.css({
+				'display': 'block',
+				'visibility': 'visible',
+				'opacity': '1',
+				'z-index': '9999',
+				'position': 'absolute'
+			});
+			
+			// Adjust position if dropdown would be cut off
+			var menuHeight = $menu.outerHeight();
+			var buttonOffset = $button.offset();
+			var tableContainer = $('#manageProductTable').closest('.dataTables_wrapper');
+			var containerBottom = tableContainer.offset().top + tableContainer.outerHeight();
+			
+			if (buttonOffset.top + menuHeight > containerBottom) {
+				$menu.css({
+					'top': 'auto',
+					'bottom': '100%'
+				});
+			}
+		}
+	});
+	
+	// Close dropdown when clicking outside
+	$(document).off('click.productDropdown').on('click.productDropdown', function(e) {
+		if (!$(e.target).closest('.btn-group').length) {
+			$('#manageProductTable .btn-group.open').removeClass('open');
+		}
+	});
+	
+	// Handle dropdown menu item clicks
+	$('#manageProductTable').off('click.dropdownItem').on('click.dropdownItem', '.dropdown-menu a', function(e) {
+		var $this = $(this);
+		var href = $this.attr('href');
+		
+		// Allow default action to proceed
+		if (href && href !== '#') {
+			// For edit/remove actions, close dropdown after a brief delay
+			setTimeout(function() {
+				$('#manageProductTable .btn-group.open').removeClass('open');
+			}, 100);
+		} else {
+			e.preventDefault();
+		}
+	});
+}
 
 function clearForm(oForm) {
 	// var frm_elements = oForm.elements;									

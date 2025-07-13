@@ -1,41 +1,43 @@
 <?php require_once 'includes/header.php'; ?>
 
 
-<div class="row">
-	<div class="col-md-12">
+<!-- Page Header -->
+<div style="background: white; padding: 32px; border-radius: 12px; margin-bottom: 24px; border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm);">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 style="margin: 0; font-size: 28px; font-weight: 600; color: var(--gray-900);">
+                <i class="fa fa-th-list" style="color: var(--primary-600);"></i> Category Management
+            </h1>
+            <p style="margin: 8px 0 0 0; color: var(--gray-600); font-size: 16px;">
+                Organize your products into categories for better inventory management.
+            </p>
+        </div>
+        <div class="col-md-4 text-right">
+            <button class="btn btn-primary" data-toggle="modal" id="addCategoriesModalBtn" data-target="#addCategoriesModal">
+                <i class="fa fa-plus"></i> Add New Category
+            </button>
+        </div>
+    </div>
+</div>
 
-		<ol class="breadcrumb">
-		  <li><a href="dashboard.php">Home</a></li>		  
-		  <li class="active">Category</li>
-		</ol>
-
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Manage Categories</div>
-			</div> <!-- /panel-heading -->
-			<div class="panel-body">
-
-				<div class="remove-messages"></div>
-
-				<div class="div-action pull pull-right" style="padding-bottom:20px;">
-					<button class="btn btn-default button1" data-toggle="modal" id="addCategoriesModalBtn" data-target="#addCategoriesModal"> <i class="glyphicon glyphicon-plus-sign"></i> Add Categories </button>
-				</div> <!-- /div-action -->				
-				
-				<table class="table" id="manageCategoriesTable">
-					<thead>
-						<tr>							
-							<th>Categories Name</th>
-							<th>Status</th>
-							<th style="width:15%;">Options</th>
-						</tr>
-					</thead>
-				</table>
-				<!-- /table -->
-
-			</div> <!-- /panel-body -->
-		</div> <!-- /panel -->		
-	</div> <!-- /col-md-12 -->
-</div> <!-- /row -->
+<!-- Categories Table -->
+<div style="background: white; border-radius: 12px; border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm); overflow: hidden;">
+    <div style="padding: 24px 24px 0 24px;">
+        <div class="remove-messages"></div>
+    </div>
+    
+    <div style="padding: 0 24px 24px 24px;">
+        <table class="table" id="manageCategoriesTable">
+            <thead>
+                <tr>
+                    <th>Category Name</th>
+                    <th>Status</th>
+                    <th style="width:15%;">Options</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
 
 
 <!-- add categories -->

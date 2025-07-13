@@ -53,81 +53,81 @@ if($_POST) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Pharma Vault</title>
-  <link rel="icon" href="logo.png" type="image/png" sizes="16x16">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharma Vault - Sign In</title>
+    <link rel="icon" href="logo.png" type="image/png" sizes="16x16">
 
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="assests/bootstrap/css/bootstrap.min.css">
-	<!-- bootstrap theme-->
-	<link rel="stylesheet" href="assests/bootstrap/css/bootstrap-theme.min.css">
-	<!-- font awesome -->
-	<link rel="stylesheet" href="assests/font-awesome/css/font-awesome.min.css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assests/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assests/font-awesome/css/font-awesome.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="custom/css/custom.css">
 
-  <!-- custom css -->
-  <link rel="stylesheet" href="custom/css/custom.css">	
-
-  <!-- jquery -->
-	<script src="assests/jquery/jquery.min.js"></script>
-  <!-- jquery ui -->  
-  <link rel="stylesheet" href="assests/jquery-ui/jquery-ui.min.css">
-  <script src="assests/jquery-ui/jquery-ui.min.js"></script>
-
-  <!-- bootstrap js -->
-	<script src="assests/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="assests/jquery/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="assests/bootstrap/js/bootstrap.min.js"></script>
 </head>
-<body>
-	<div class="container">
-		<div class="row vertical">
-			<div class="col-md-5 col-md-offset-4">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h3 class="panel-title">Please Sign in</h3>
-					</div>
-					<div class="panel-body">
+<body style="min-height: 100vh; background: var(--gray-100); display: flex; align-items: center; justify-content: center; padding: 24px; font-family: var(--font-family);">
+    <div style="background: white; border-radius: 16px; box-shadow: var(--shadow-xl); overflow: hidden; width: 100%; max-width: 400px; border: 1px solid var(--gray-200);">
+        <!-- Header Section -->
+        <div style="background: var(--gray-900); color: white; padding: 32px; text-align: center;">
+            <div style="margin-bottom: 16px;">
+                <img src="logo.png" alt="Pharma Vault" style="max-height: 50px; filter: brightness(0) invert(1);">
+            </div>
+            <h1 style="margin: 0; font-size: 24px; font-weight: 600;">Welcome Back</h1>
+            <p style="margin: 8px 0 0 0; opacity: 0.9; font-size: 14px;">Sign in to access your inventory dashboard</p>
+        </div>
+        
+        <!-- Form Section -->
+        <div style="padding: 32px;">
+            <?php if($errors): ?>
+                <div style="background: var(--danger-50); color: var(--danger-600); border: 1px solid var(--danger-200); border-radius: 8px; padding: 16px; margin-bottom: 24px; border-left: 4px solid var(--danger-500);">
+                    <i class="fa fa-exclamation-triangle" style="margin-right: 8px;"></i>
+                    <?php foreach ($errors as $error): ?>
+                        <div><?php echo $error; ?></div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
 
-						<div class="messages">
-							<?php if($errors) {
-								foreach ($errors as $key => $value) {
-									echo '<div class="alert alert-warning" role="alert">
-									<i class="glyphicon glyphicon-exclamation-sign"></i>
-									'.$value.'</div>';										
-									}
-								} ?>
-						</div>
-
-						<form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" id="loginForm">
-							<fieldset>
-							  <div class="form-group">
-									<label for="username" class="col-sm-2 control-label">Username</label>
-									<div class="col-sm-10">
-									  <input type="text" class="form-control" id="username" name="username" placeholder="Username" autocomplete="off" />
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="password" class="col-sm-2 control-label">Password</label>
-									<div class="col-sm-10">
-									  <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off" />
-									</div>
-								</div>								
-								<div class="form-group">
-									<div class="col-sm-offset-2 col-sm-10">
-									  <button type="submit" class="btn btn-default"> <i class="glyphicon glyphicon-log-in"></i> Sign in</button>
-									</div>
-								</div>
-							</fieldset>
-						</form>
-					</div>
-					<!-- panel-body -->
-				</div>
-				<!-- /panel -->
-			</div>
-			<!-- /col-md-4 -->
-		</div>
-		<!-- /row -->
-	</div>
-	<!-- container -->	
+            <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" id="loginForm">
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; font-weight: 500; color: var(--gray-700); margin-bottom: 8px; font-size: 14px;">
+                        <i class="fa fa-user" style="color: var(--gray-400); margin-right: 8px;"></i> Username
+                    </label>
+                    <input type="text" name="username" placeholder="Enter your username" autocomplete="off" required 
+                           style="width: 100%; padding: 12px 16px; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 16px; transition: var(--transition-fast); background: white;" 
+                           onfocus="this.style.borderColor='var(--primary-500)'; this.style.boxShadow='0 0 0 3px rgb(14 165 233 / 0.1)'"
+                           onblur="this.style.borderColor='var(--gray-200)'; this.style.boxShadow='none'" />
+                </div>
+                
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; font-weight: 500; color: var(--gray-700); margin-bottom: 8px; font-size: 14px;">
+                        <i class="fa fa-lock" style="color: var(--gray-400); margin-right: 8px;"></i> Password
+                    </label>
+                    <input type="password" name="password" placeholder="Enter your password" autocomplete="off" required 
+                           style="width: 100%; padding: 12px 16px; border: 2px solid var(--gray-200); border-radius: 8px; font-size: 16px; transition: var(--transition-fast); background: white;" 
+                           onfocus="this.style.borderColor='var(--primary-500)'; this.style.boxShadow='0 0 0 3px rgb(14 165 233 / 0.1)'"
+                           onblur="this.style.borderColor='var(--gray-200)'; this.style.boxShadow='none'" />
+                </div>
+                
+                <button type="submit" style="width: 100%; background: var(--primary-600); color: white; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: var(--transition-fast); display: flex; align-items: center; justify-content: center; gap: 8px;"
+                        onmouseover="this.style.background='var(--primary-700)'; this.style.transform='translateY(-1px)'"
+                        onmouseout="this.style.background='var(--primary-600)'; this.style.transform='translateY(0)'">
+                    <i class="fa fa-sign-in"></i>
+                    Sign In to Dashboard
+                </button>
+            </form>
+            
+            <div style="text-align: center; margin-top: 24px; color: var(--gray-500); font-size: 13px;">
+                <p style="margin: 0;">&copy; 2025 Pharma Vault. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
 

@@ -1,41 +1,43 @@
 <?php require_once 'includes/header.php'; ?>
 
 
-<div class="row">
-	<div class="col-md-12">
+<!-- Page Header -->
+<div style="background: white; padding: 32px; border-radius: 12px; margin-bottom: 24px; border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm);">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 style="margin: 0; font-size: 28px; font-weight: 600; color: var(--gray-900);">
+                <i class="fa fa-tags" style="color: var(--primary-600);"></i> Brand Management
+            </h1>
+            <p style="margin: 8px 0 0 0; color: var(--gray-600); font-size: 16px;">
+                Manage product brands and their availability status.
+            </p>
+        </div>
+        <div class="col-md-4 text-right">
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addBrandModel">
+                <i class="fa fa-plus"></i> Add New Brand
+            </button>
+        </div>
+    </div>
+</div>
 
-		<ol class="breadcrumb">
-		  <li><a href="dashboard.php">Home</a></li>		  
-		  <li class="active">Brand</li>
-		</ol>
-
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Manage Brand</div>
-			</div> <!-- /panel-heading -->
-			<div class="panel-body">
-
-				<div class="remove-messages"></div>
-
-				<div class="div-action pull pull-right" style="padding-bottom:20px;">
-					<button class="btn btn-default button1" data-toggle="modal" data-target="#addBrandModel"> <i class="glyphicon glyphicon-plus-sign"></i> Add Brand </button>
-				</div> <!-- /div-action -->				
-				
-				<table class="table" id="manageBrandTable">
-					<thead>
-						<tr>							
-							<th>Brand Name</th>
-							<th>Status</th>
-							<th style="width:15%;">Options</th>
-						</tr>
-					</thead>
-				</table>
-				<!-- /table -->
-
-			</div> <!-- /panel-body -->
-		</div> <!-- /panel -->		
-	</div> <!-- /col-md-12 -->
-</div> <!-- /row -->
+<!-- Brands Table -->
+<div style="background: white; border-radius: 12px; border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm); overflow: hidden;">
+    <div style="padding: 24px 24px 0 24px;">
+        <div class="remove-messages"></div>
+    </div>
+    
+    <div style="padding: 0 24px 24px 24px;">
+        <table class="table" id="manageBrandTable">
+            <thead>
+                <tr>
+                    <th>Brand Name</th>
+                    <th>Status</th>
+                    <th style="width:15%;">Options</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
 
 <div class="modal fade" id="addBrandModel" tabindex="-1" role="dialog">
   <div class="modal-dialog">

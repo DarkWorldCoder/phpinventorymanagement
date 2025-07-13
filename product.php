@@ -1,46 +1,48 @@
 <?php require_once 'php_action/db_connect.php' ?>
 <?php require_once 'includes/header.php'; ?>
 
-<div class="row">
-	<div class="col-md-12">
+<!-- Page Header -->
+<div style="background: white; padding: 32px; border-radius: 12px; margin-bottom: 24px; border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm);">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 style="margin: 0; font-size: 28px; font-weight: 600; color: var(--gray-900);">
+                <i class="fa fa-cube" style="color: var(--primary-600);"></i> Product Management
+            </h1>
+            <p style="margin: 8px 0 0 0; color: var(--gray-600); font-size: 16px;">
+                Manage your inventory products, stock levels, and product information.
+            </p>
+        </div>
+        <div class="col-md-4 text-right">
+            <button class="btn btn-primary" data-toggle="modal" id="addProductModalBtn" data-target="#addProductModal">
+                <i class="fa fa-plus"></i> Add New Product
+            </button>
+        </div>
+    </div>
+</div>
 
-		<ol class="breadcrumb">
-		  <li><a href="dashboard.php">Home</a></li>		  
-		  <li class="active">Product</li>
-		</ol>
-
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<div class="page-heading"> <i class="glyphicon glyphicon-edit"></i> Manage Product</div>
-			</div> <!-- /panel-heading -->
-			<div class="panel-body">
-
-				<div class="remove-messages"></div>
-
-				<div class="div-action pull pull-right" style="padding-bottom:20px;">
-					<button class="btn btn-default button1" data-toggle="modal" id="addProductModalBtn" data-target="#addProductModal"> <i class="glyphicon glyphicon-plus-sign"></i> Add Product </button>
-				</div> <!-- /div-action -->				
-				
-				<table class="table" id="manageProductTable">
-					<thead>
-						<tr>
-							<th style="width:10%;">Photo</th>							
-							<th>Product Name</th>
-							<th>Rate</th>							
-							<th>Quantity</th>
-							<th>Brand</th>
-							<th>Category</th>
-							<th>Status</th>
-							<th style="width:15%;">Options</th>
-						</tr>
-					</thead>
-				</table>
-				<!-- /table -->
-
-			</div> <!-- /panel-body -->
-		</div> <!-- /panel -->		
-	</div> <!-- /col-md-12 -->
-</div> <!-- /row -->
+<!-- Products Table -->
+<div class="product-table-container" style="background: white; border-radius: 12px; border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm); overflow: visible;">
+    <div style="padding: 24px 24px 0 24px;">
+        <div class="remove-messages"></div>
+    </div>
+    
+    <div style="padding: 0 24px 24px 24px; overflow: visible;">
+        <table class="table" id="manageProductTable">
+            <thead>
+                <tr>
+                    <th style="width:10%;">Photo</th>
+                    <th>Product Name</th>
+                    <th>Rate</th>
+                    <th>Quantity</th>
+                    <th>Brand</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th style="width:15%;">Options</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
 
 
 <!-- add product -->

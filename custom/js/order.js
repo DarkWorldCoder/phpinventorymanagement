@@ -387,15 +387,17 @@ setTimeout(function() {
 function addRow() {
 	$("#addRowBtn").button("loading");
 
-	var tableLength = $("#productTable tbody tr").length;
+	// Determine which table to use based on the page context
+	var tableSelector = $("#editProductTable").length > 0 ? "#editProductTable" : "#productTable";
+	var tableLength = $(tableSelector + " tbody tr").length;
 
 	var tableRow;
 	var arrayNumber;
 	var count;
 
 	if(tableLength > 0) {		
-		tableRow = $("#productTable tbody tr:last").attr('id');
-		arrayNumber = $("#productTable tbody tr:last").attr('class');
+		tableRow = $(tableSelector + " tbody tr:last").attr('id');
+		arrayNumber = $(tableSelector + " tbody tr:last").attr('class');
 		count = tableRow.substring(3);	
 		count = Number(count) + 1;
 		arrayNumber = Number(arrayNumber) + 1;					
@@ -449,9 +451,9 @@ function addRow() {
 				'</td>'+
 			'</tr>';
 			if(tableLength > 0) {							
-				$("#productTable tbody tr:last").after(tr);
+				$(tableSelector + " tbody tr:last").after(tr);
 			} else {				
-				$("#productTable tbody").append(tr);
+				$(tableSelector + " tbody").append(tr);
 			}		
 
 		} // /success
@@ -559,10 +561,12 @@ function getTotal(row = null) {
 }
 
 function subAmount() {
-	var tableProductLength = $("#productTable tbody tr").length;
+	// Determine which table to use based on the page context
+	var tableSelector = $("#editProductTable").length > 0 ? "#editProductTable" : "#productTable";
+	var tableProductLength = $(tableSelector + " tbody tr").length;
 	var totalSubAmount = 0;
 	for(x = 0; x < tableProductLength; x++) {
-		var tr = $("#productTable tbody tr")[x];
+		var tr = $(tableSelector + " tbody tr")[x];
 		var count = $(tr).attr('id');
 		count = count.substring(3);
 

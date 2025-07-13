@@ -31,14 +31,22 @@ if($result->num_rows > 0) {
  		$active = "<label class='label label-danger'>Not Available</label>";
  	} // /else
 
- 	$button = '<!-- Single button -->
-	<div class="btn-group">
-	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	    Action <span class="caret"></span>
+ 	$button = '
+	<div class="btn-group" style="position: relative;">
+	  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: 1px solid var(--gray-300); background: white; color: var(--gray-700); padding: 4px 8px; font-size: 12px;">
+	    <i class="fa fa-cog"></i> Action <span class="caret"></span>
 	  </button>
-	  <ul class="dropdown-menu">
-	    <li><a type="button" data-toggle="modal" id="editProductModalBtn" data-target="#editProductModal" onclick="editProduct('.$productId.')"> <i class="glyphicon glyphicon-edit"></i> Edit</a></li>
-	    <li><a type="button" data-toggle="modal" data-target="#removeProductModal" id="removeProductModalBtn" onclick="removeProduct('.$productId.')"> <i class="glyphicon glyphicon-trash"></i> Remove</a></li>       
+	  <ul class="dropdown-menu dropdown-menu-right" style="min-width: 120px; z-index: 1050; background: white; border: 1px solid var(--gray-200); border-radius: 6px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);">
+	    <li>
+	      <a href="javascript:void(0)" data-toggle="modal" data-target="#editProductModal" onclick="editProduct('.$productId.')" style="padding: 8px 12px; color: var(--gray-700); text-decoration: none; display: block; font-size: 13px;">
+	        <i class="fa fa-edit" style="color: var(--primary-600); margin-right: 6px;"></i> Edit Product
+	      </a>
+	    </li>
+	    <li style="border-top: 1px solid var(--gray-100);">
+	      <a href="javascript:void(0)" data-toggle="modal" data-target="#removeProductModal" onclick="removeProduct('.$productId.')" style="padding: 8px 12px; color: var(--danger-600); text-decoration: none; display: block; font-size: 13px;">
+	        <i class="fa fa-trash" style="color: var(--danger-600); margin-right: 6px;"></i> Remove Product
+	      </a>
+	    </li>       
 	  </ul>
 	</div>';
 
